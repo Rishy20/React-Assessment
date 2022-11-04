@@ -1,4 +1,5 @@
 :root {
   --orange: #ff9c3f;
   --yellow: #ffd25a;
+  --gradient: linear-gradient(177.02deg, #ff9c3f 0%, #ffd25a 72.73%);
 }

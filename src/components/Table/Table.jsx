@@ -3,7 +3,7 @@ import { DialogContentText, Grid } from "@mui/material";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import React, { useRef, useState } from "react";
 import "./Table.css";
-import DialogComponent from "../Dialog/DialogComponent";
+import DialogComponent from "../DialogComponent/DialogComponent";
 
 const Table = (props) => {
   const columns = [];
@@ -13,11 +13,11 @@ const Table = (props) => {
     props.delete(deleteId);
   };
 
-  columns.push({ field: "no", headerName: "No", width: 100, headerAlign: "center", cellClassName: "table-cell" });
+  columns.push({ field: "name", headerName: "Name", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "email", headerName: "Email", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "gender", headerName: "Gender", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "status", headerName: "Status", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
 
-  props.columns.map((column) => {
-    columns.push({ field: column.field, headerName: column.name, width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
-  });
   columns.push({
     field: "actions",
     type: "actions",
@@ -26,7 +26,7 @@ const Table = (props) => {
     headerAlign: "center",
     cellClassName: "table-cell",
     getActions: (params) => [
-      <GridActionsCellItem icon={<Edit />} label="Edit" showInMenu />,
+      <GridActionsCellItem icon={<Edit />} label="Edit" />,
       <GridActionsCellItem
         icon={<Delete />}
         label="Delete"
@@ -34,13 +34,12 @@ const Table = (props) => {
           setDeleteId(params.row.id);
           model.current.handleClickOpen();
         }}
-        showInMenu
       />,
     ],
   });
   return (
-    <div className="container" style={{ height: 500, width: "100%" }}>
-      <DataGrid checkboxSelection={true} rows={props.rows} columns={columns} className="all-grid" disableExtendRowFullWidth={false} loading={props.loading} />
+    <div className="container" style={{ height: 650, width: "100%" }}>
+      <DataGrid rows={props.rows} columns={columns} className="all-grid" disableExtendRowFullWidth={false} loading={props.loading} />
       <DialogComponent
         ref={model}
         title={"Delete Confirmation"}

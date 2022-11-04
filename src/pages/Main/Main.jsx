@@ -1,9 +1,12 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { getAllUsers } from "../services/user.service";
+import Table from "../../components/Table/Table";
+import { getAllUsers } from "../../services/user.service";
+import "./Main.css";
 
 const Main = () => {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
+  const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
@@ -11,13 +14,15 @@ const Main = () => {
 
   const fetchData = async () => {
     const data = await getAllUsers();
-    console.log(data);
+    setUsers(data);
+    setUserLoading(false);
   };
   return (
     <div className="main">
       <Grid container>
         <Grid item md={8}>
-          <div className="section-heading">Users</div>
+          <h2 className="section-heading">Users</h2>
+          <Table rows={users} loading={userLoading} />
         </Grid>
         <Grid item md={4}></Grid>
       </Grid>
