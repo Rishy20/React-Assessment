@@ -2,12 +2,17 @@ import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../services/user.service";
 
-export default Main = () => {
+const Main = () => {
   const [users, setUsers] = useState();
 
-  useEffect(async () => {
-    const data = await getAllUsers();
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const data = await getAllUsers();
+    console.log(data);
+  };
   return (
     <div className="main">
       <Grid container>
@@ -19,3 +24,4 @@ export default Main = () => {
     </div>
   );
 };
+export default Main;
