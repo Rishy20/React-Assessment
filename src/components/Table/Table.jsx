@@ -12,6 +12,7 @@ const Table = (props) => {
   const [deleteId, setDeleteId] = useState();
   const onDeleteClick = () => {
     deleteUser(deleteId);
+    props.onDeleteClick();
   };
 
   columns.push({ field: "name", headerName: "Name", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
@@ -27,7 +28,13 @@ const Table = (props) => {
     headerAlign: "center",
     cellClassName: "table-cell",
     getActions: (params) => [
-      <GridActionsCellItem icon={<Edit />} label="Edit" />,
+      <GridActionsCellItem
+        icon={<Edit />}
+        label="Edit"
+        onClick={() => {
+          props.onEditClick(params.row.id);
+        }}
+      />,
       <GridActionsCellItem
         icon={<Delete />}
         label="Delete"

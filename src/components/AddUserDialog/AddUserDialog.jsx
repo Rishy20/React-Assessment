@@ -1,7 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Button, Dialog, DialogContent, DialogTitle, Grid } from "@mui/material";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
-import { addUser } from "../../services/user.service";
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { addUser, editUser } from "../../services/user.service";
 import Input from "../Input/Input";
 import SelectBox from "../Select/SelectBox";
 import "./AddUserDialog.css";
@@ -37,6 +37,12 @@ const AddUserDialog = forwardRef((props, ref) => {
     status: "",
   });
 
+  useEffect(() => {
+    if (props.isEdit && props.user) {
+      setUser(props.user);
+    }
+  }, [props.user]);
+
   const handleChange = (e) => {
     let temp = {};
     temp[e.target.name] = e.target.value;
@@ -44,15 +50,18 @@ const AddUserDialog = forwardRef((props, ref) => {
   };
 
   const handleSubmit = async () => {
-    const response = await addUser(user);
-    console.log(response);
-    if (response) {
-      handleClose();
-      // dispatch(conceptActions.resetState());
-      // setName("");
-      // setPreRequisite([]);
-      // setLOCount([0]);
+    if (props.isEdit) {
+      const response = await editUser(user, props.user.id);
+      if (response) {
+        handleClose();
+      }
+    } else {
+      const response = await addUser(user);
+      if (response) {
+        handleClose();
+      }
     }
+    props.onClose();
   };
   const handleClickOpen = () => {
     setOpen(true);

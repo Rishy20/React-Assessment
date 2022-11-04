@@ -11,9 +11,6 @@ const SelectBox = (props) => {
       setSelected(true);
     }
   }, [props.value]);
-  useEffect(() => {
-    console.log(props.values);
-  }, []);
   return (
     <div className="select">
       <InputLabel shrink htmlFor={props.id} className="required">
