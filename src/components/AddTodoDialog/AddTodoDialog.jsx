@@ -28,6 +28,7 @@ const AddTodoDialog = forwardRef((props, ref) => {
     if (response) {
       setTitle("");
       handleClose();
+      props.onClose(props.userId);
     }
   };
   const handleClickOpen = () => {

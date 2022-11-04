@@ -82,7 +82,7 @@ const Main = () => {
       <AddUserDialog ref={addUserModel} isEdit={false} onClose={fetchUserData} />
       <AddUserDialog ref={editUserModel} isEdit={true} user={selectedUser} onClose={fetchUserData} />
 
-      <AddTodoDialog ref={addTodoModel} userId={userId} />
+      <AddTodoDialog ref={addTodoModel} userId={userId} onClose={fetchTodoData} />
     </div>
   );
 };
