@@ -1,0 +1,25 @@
+.select .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--orange);
+}
+.select .MuiSelect-root:focus .MuiOutlinedInput-notchedOutline {
+  border-color: var(--orange);
+}
+.select .MuiInputLabel-root {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 1px;
+}
+.select .MuiOutlinedInput-root {
+  width: 100%;
+}
+.select .not-selected .MuiSelect-select {
+  color: #bcbcbc;
+}
+.select .selected .MuiSelect-select {
+  color: #bcbcbc;
+}
+.select .MuiInputLabel-root.required:after {
+  content: " *";
+  color: #d32f2f;
+}

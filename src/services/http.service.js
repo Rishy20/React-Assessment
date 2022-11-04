@@ -23,17 +23,16 @@ const getAll = async (url) => {
     .catch((err) => console.log(err));
 };
 const getById = async (url, id) => {
-  return await fetch(url + `/${id}`)
+  return await fetch(url + `/${id}`, {
+    headers: header,
+  })
     .then((res) => res.json())
     .then((data) => data)
     .catch((err) => console.log(err));
 };
 const update = async (url, data) => {
   return await fetch(url, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+    headers: header,
     method: "PUT",
     body: JSON.stringify(data),
   })
@@ -43,6 +42,7 @@ const update = async (url, data) => {
 };
 const deleteById = async (url, id) => {
   return await fetch(url + `/${id}`, {
+    headers: header,
     method: "DELETE",
   })
     .then((res) => res.json())

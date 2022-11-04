@@ -3,3 +3,9 @@
   --yellow: #ffd25a;
   --gradient: linear-gradient(177.02deg, #ff9c3f 0%, #ffd25a 72.73%);
 }
+.mt-2 {
+  margin-top: 20px;
+}
+.mt-0 {
+  margin-top: 0px !important;
+}

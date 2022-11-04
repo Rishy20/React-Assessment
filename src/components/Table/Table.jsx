@@ -4,19 +4,20 @@ import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import React, { useRef, useState } from "react";
 import "./Table.css";
 import DialogComponent from "../DialogComponent/DialogComponent";
+import { deleteUser } from "../../services/user.service";
 
 const Table = (props) => {
   const columns = [];
   const model = useRef();
   const [deleteId, setDeleteId] = useState();
   const onDeleteClick = () => {
-    props.delete(deleteId);
+    deleteUser(deleteId);
   };
 
   columns.push({ field: "name", headerName: "Name", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
-  columns.push({ field: "email", headerName: "Email", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
-  columns.push({ field: "gender", headerName: "Gender", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
-  columns.push({ field: "status", headerName: "Status", width: 200, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "email", headerName: "Email", width: 300, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "gender", headerName: "Gender", width: 150, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
+  columns.push({ field: "status", headerName: "Status", width: 150, headerAlign: "center", cellClassName: "table-cell", flex: 1 });
 
   columns.push({
     field: "actions",

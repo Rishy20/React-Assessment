@@ -1,0 +1,4 @@
+.dialog.add-user-dialog .MuiPaper-root.MuiDialog-paper {
+  min-width: 850px !important;
+  min-height: 400px;
+}
