@@ -40,7 +40,7 @@ const Table = (props) => {
   });
   return (
     <div className="container" style={{ height: 650, width: "100%" }}>
-      <DataGrid rows={props.rows} columns={columns} className="all-grid" disableExtendRowFullWidth={false} loading={props.loading} />
+      <DataGrid rows={props.rows} columns={columns} className="all-grid" disableExtendRowFullWidth={false} loading={props.loading} onRowClick={(params) => props.onRowClick(params.row.id)} />
       <DialogComponent
         ref={model}
         title={"Delete Confirmation"}
